@@ -73,9 +73,23 @@
                     return false;  
         }
 
+        public function grabar() {
+            $arrSerVeh = serialize($this->vehiculos);
+            file_put_contents("vehiculos.json", $arrSerVeh);
+            //print_r ($arrSer); echo(PHP_EOL);
+        }
+
+        public function leer() {
+            $recArrVeh = file_get_contents("vehiculos.json");
+            $arrOrigVeh = unserialize($recArrVeh);
+            //print_r ($arrOrig);
+            $this->vehiculos = $arrOrigVeh;
+        }
+        /*
         public function salida() {
             echo ('================================='); echo(PHP_EOL);
             echo ('Gracias por utilizar el Servicio.'); echo(PHP_EOL);
             echo ('================================='); echo(PHP_EOL);
-        }                          
+        }    
+        */                      
     }

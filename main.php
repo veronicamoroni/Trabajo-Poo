@@ -3,13 +3,18 @@
     require_once('Cliente.php');
     require_once('ServiceVehiculo.php');
     require_once('vehiculo.php');
-
+    
     $servicioCliente = new ServiceCliente();
     $servicioVehiculo = new ServiceVehiculo();
+    
+    $servicioCliente->leer();
+    $servicioVehiculo->leer();
+    
     
     function menuPrincipal() {
         echo ('========= Bienvenidos =========='); echo(PHP_EOL);
         echo ('===== PosService AutoMotion ===='); echo(PHP_EOL);
+        echo ('================='); echo(PHP_EOL);
         echo ('Menu de opciones'); echo(PHP_EOL);
         echo ('================='); echo(PHP_EOL);
         echo ('1-Clientes.'); echo(PHP_EOL);
@@ -19,7 +24,8 @@
             
            
     function menuCliente() {
-        
+
+        echo(PHP_EOL);
         echo ('================='); echo(PHP_EOL);
         echo ('Menu de Clientes.'); echo(PHP_EOL);
         echo ('================='); echo(PHP_EOL);
@@ -43,7 +49,8 @@
         echo ('5 - Mostrar Lista de Vehículos.'); echo(PHP_EOL);
         echo ('0 - Salir.'); echo(PHP_EOL);
     }
-       
+    
+
     $opcion = " ";
     while ($opcion != 0) {
         menuPrincipal();
@@ -60,6 +67,7 @@
                         case 1: 
                             echo('Seleccionaste dar de alta a un cliente.'.PHP_EOL);
                             $servicioCliente->altaCliente(); break;
+                           
                         case 2: 
                             echo('Seleccionaste modificar un cliente.'.PHP_EOL);
                             $servicioCliente->modificarCliente(); break;
@@ -70,9 +78,11 @@
                             echo('Seleccionaste buscar un cliente.'.PHP_EOL);
                             $servicioCliente->buscarCliente(); break;
                         case 5: 
-                            echo('Seleccionaste lista de clientes.'.PHP_EOL);
+                            echo('Lista de clientes.'.PHP_EOL);
                             $servicioCliente->listaCliente(); break;
+                        
                         case 0: 
+                            $servicioCliente->grabar(); break;
                             echo ('Regresar al Menú Principal.'.PHP_EOL); break;
                         default: 
                             echo('Opción inválida.'.PHP_EOL);
@@ -102,7 +112,9 @@
                         case 5: 
                             echo('Seleccionaste lista de vehículos.'.PHP_EOL);
                             $servicioVehiculo->listaVehiculo(); break;
-                        case 0: echo ('Regresar al Menú Principal.'.PHP_EOL); break;
+                        case 0: 
+                            $servicioVehiculo->grabar(); break;
+                            echo ('Regresar al Menú Principal.'.PHP_EOL); break;
                         default: 
                             echo('Opción inválida.'.PHP_EOL);
                     }
@@ -111,5 +123,6 @@
             
             case 0: $servicioCliente->salida(); break;
         }
+       
     }
     

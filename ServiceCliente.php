@@ -15,10 +15,16 @@
             $mail = readline('Ingrese mail del Cliente: ');
             $c = new Cliente($dni, $nombre, $apellido, $tel, $mail);
             $this->listaCli[] = $c;
+
+            $arrSer = serialize($this->listaCli);
+            //print_r ($arrSer);
+            file_put_contents("clientes.json", $arrSer);
+
             echo ('El cliente se ha cargado correctamente.'.PHP_EOL);
             return true;
         }
 
+        
         public function listaCliente() {     // Función para mostrar clientes
             foreach ($this->listaCli as $x){
                 $x->mostrar();
@@ -27,7 +33,7 @@
         
            
         public function bajaCliente() {          // Función para eliminar cliente
-            $dni = readline('El DNI del cliente a dar de baja es:');           
+            $dni = readline('El DNI del cliente a dar de baja es: ');           
             foreach ($this->listaCli as $cli => $c) {
                 if ($c->getDni() === $dni) {
                     unset($this->listaCli[$cli]);
@@ -79,11 +85,27 @@
                     echo ('El Cliente No existe.'.PHP_EOL);
                     return false;  
         }
+        
+        public function grabar() {
+            $arrSer = serialize($this->listaCli);
+            file_put_contents("clientes.json", $arrSer);
+            //print_r ($arrSer); echo(PHP_EOL);
+        }
 
+        public function leer() {
+            $recArr = file_get_contents("clientes.json");
+            $arrOrig = unserialize($recArr);
+            //print_r ($arrOrig);
+            $this->listaCli = $arrOrig;
+        }
+        
         public function salida() {
             echo ('================================='); echo(PHP_EOL);
             echo ('Gracias por utilizar el Servicio.'); echo(PHP_EOL);
             echo ('================================='); echo(PHP_EOL);
         }
-                                  
+        
+        
     }
+
+   

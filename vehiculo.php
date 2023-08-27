@@ -38,8 +38,8 @@
 
               
         public function mostrar() {
-            echo ('La patente del vehiculo es: '.$this->patente.'; '); echo(PHP_EOL);
-            echo ('La marca del vehiculo es: '.$this->marca.'; '); echo(PHP_EOL);
-            echo ('El modelo del vehiculo es: '.$this->modelo); echo(PHP_EOL);
+            echo ('Patente: '.$this->patente.'; '); //echo(PHP_EOL);
+            echo ('Marca: '.$this->marca.'; '); //echo(PHP_EOL);
+            echo ('Modelo: '.$this->modelo); echo(PHP_EOL);
        }
     }

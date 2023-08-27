@@ -55,10 +55,11 @@
         } 
        
         public function mostrar() {
+            
             echo ('DNI: '.$this->dni.';'); //echo(PHP_EOL);
             echo (' Nombre: '.$this->nombre.';'); //echo(PHP_EOL);
             echo (' Apellido: '.$this->apellido.';');
             echo (' Tel: '.$this->tel.';');  
             echo (' Mail: '.$this->mail); echo(PHP_EOL);
-       }
+        }
     }
